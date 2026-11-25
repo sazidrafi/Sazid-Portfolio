@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =====================================================
+   COLOR ROLES (RGB channels). Accent scale = teal.
+   To change the accent, edit ONLY the 11 --accent-* steps
+   and the accent role mappings that point to them below.
+   Light uses step 700, dark uses step 400.
+   ===================================================== */
+:root {
+  --accent-50: 240 253 250;  --accent-100: 204 251 241; --accent-200: 153 246 228;
+  --accent-300: 94 234 212;  --accent-400: 45 212 191;  --accent-500: 20 184 166;
+  --accent-600: 13 148 136;  --accent-700: 15 118 110;  --accent-800: 17 94 89;
+  --accent-900: 19 78 74;    --accent-950: 4 47 46;
+}
+
+/* Light */
+:root {
+  --bg: 248 250 252;  --bg-subtle: 241 245 249;
+  --surface: 255 255 255; --surface-hover: 248 250 252;
+  --border: 226 232 240; --border-strong: 203 213 225;
+  --text: 15 23 42; --text-muted: 71 85 105; --text-subtle: 100 116 139;
+
+  --accent: var(--accent-700); --accent-hover: var(--accent-800); --accent-active: var(--accent-900);
+  --accent-subtle: var(--accent-50);  --accent-subtle-a: 1;
+  --accent-border: var(--accent-200); --accent-border-a: 1;
+  --on-accent: 255 255 255; --focus-ring: var(--accent-600);
+  --selection-bg: var(--accent-100); --selection-bg-a: 1; --selection-text: var(--accent-900);
+
+  --code-bg: 241 245 249; --code-text: var(--accent-800);
+
+  --success: 21 128 61;  --success-subtle: 240 253 244;
+  --warning: 180 83 9;   --warning-subtle: 255 251 235;
+  --danger: 185 28 28;   --danger-subtle: 254 242 242;
+  --info: 29 78 216;     --info-subtle: 239 246 255;
+  --status-subtle-a: 1;
+}
+
+/* Dark */
+.dark {
+  --bg: 11 17 32; --bg-subtle: 14 21 38;
+  --surface: 17 24 39; --surface-hover: 22 30 46;
+  --border: 31 41 55; --border-strong: 43 54 71;
+  --text: 241 245 249; --text-muted: 148 163 184; --text-subtle: 100 116 139;
+
+  --accent: var(--accent-400); --accent-hover: var(--accent-300); --accent-active: var(--accent-200);
+  --accent-subtle: var(--accent-400); --accent-subtle-a: 0.1;
+  --accent-border: var(--accent-400); --accent-border-a: 0.3;
+  --on-accent: var(--accent-950); --focus-ring: var(--accent-400);
+  --selection-bg: var(--accent-400); --selection-bg-a: 0.3; --selection-text: 255 255 255;
+
+  --code-bg: 14 21 38; --code-text: var(--accent-300);
+
+  --success: 74 222 128;  --success-subtle: 74 222 128;
+  --warning: 251 191 36;  --warning-subtle: 251 191 36;
+  --danger: 248 113 113;  --danger-subtle: 248 113 113;
+  --info: 96 165 250;     --info-subtle: 96 165 250;
+  --status-subtle-a: 0.1;
+  color-scheme: dark;
+}
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  }
+  body {
+    @apply bg-bg font-sans text-text antialiased leading-relaxed;
+    transition: background-color 150ms ease, color 150ms ease;
+  }
+  ::selection { background: rgb(var(--selection-bg) / var(--selection-bg-a)); color: rgb(var(--selection-text)); }
+  :focus-visible { @apply outline outline-2 outline-offset-2 outline-focus-ring rounded-sm; }
+  h1, h2, h3, h4 { @apply text-text leading-tight; }
+}
