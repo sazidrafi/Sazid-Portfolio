@@ -23,7 +23,9 @@ export default function SectionNav({ items }) {
       for (const el of els) {
         if (el.getBoundingClientRect().top <= line) current = el.id;
       }
-      const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4;
+      const atBottom =
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 4;
       if (atBottom) current = els[els.length - 1].id;
       setActive(current);
     };
@@ -46,12 +48,17 @@ export default function SectionNav({ items }) {
     locked.current = true;
     setTimeout(() => {
       locked.current = false;
-    }, 900);
+    }, 1600);
   }
 
   return (
-    <nav aria-label="On this page" className="sticky top-24 hidden self-start lg:block">
-      <p className="mb-3 font-mono text-xs uppercase tracking-wider text-subtle">On this page</p>
+    <nav
+      aria-label="On this page"
+      className="sticky top-24 hidden self-start lg:block"
+    >
+      <p className="mb-3 font-mono text-xs uppercase tracking-wider text-subtle">
+        On this page
+      </p>
       <ul className="border-l border-border">
         {items.map((i) => (
           <li key={i.id}>
@@ -60,7 +67,9 @@ export default function SectionNav({ items }) {
               onClick={() => onClick(i.id)}
               aria-current={active === i.id ? "true" : undefined}
               className={`-ml-px block border-l-2 py-1.5 pl-4 text-sm transition-colors ${
-                active === i.id ? "border-accent text-accent" : "border-transparent text-muted hover:text-text"
+                active === i.id
+                  ? "border-accent text-accent"
+                  : "border-transparent text-muted hover:text-text"
               }`}
             >
               {i.label}

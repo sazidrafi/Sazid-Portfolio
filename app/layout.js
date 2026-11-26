@@ -5,6 +5,7 @@ import ThemeProvider from "@/components/layout/ThemeProvider";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import ScrollReveal from "@/components/layout/ScrollReveal";
+import SmoothScroll from "@/components/layout/SmoothScroll";
 import profile from "@/data/profile";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans", display: "swap" });
@@ -35,6 +36,7 @@ export default function RootLayout({ children }) {
           <main id="main">{children}</main>
           <Footer />
           <ScrollReveal />
+          <SmoothScroll />
         </ThemeProvider>
       </body>
     </html>

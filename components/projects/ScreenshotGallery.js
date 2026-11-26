@@ -75,25 +75,45 @@ export default function ScreenshotGallery({ shots, title }) {
       {open !== null && (
         <div
           role="dialog"
+          data-lenis-prevent
           aria-modal="true"
           aria-label={`${title} screenshots`}
           className="page-enter fixed inset-0 z-50 flex items-center justify-center bg-bg/90 p-4 backdrop-blur-sm"
           onClick={close}
         >
-          <button ref={closeRef} type="button" aria-label="Close" onClick={stop(close)} className={`${iconBtn} fixed right-4 top-4`}>
+          <button
+            ref={closeRef}
+            type="button"
+            aria-label="Close"
+            onClick={stop(close)}
+            className={`${iconBtn} fixed right-4 top-4`}
+          >
             <X size={20} />
           </button>
           {n > 1 && (
             <>
-              <button type="button" aria-label="Previous screenshot" onClick={stop(() => step(-1))} className={`${iconBtn} fixed left-3 top-1/2 -translate-y-1/2`}>
+              <button
+                type="button"
+                aria-label="Previous screenshot"
+                onClick={stop(() => step(-1))}
+                className={`${iconBtn} fixed left-3 top-1/2 -translate-y-1/2`}
+              >
                 <ChevronLeft size={22} />
               </button>
-              <button type="button" aria-label="Next screenshot" onClick={stop(() => step(1))} className={`${iconBtn} fixed right-3 top-1/2 -translate-y-1/2`}>
+              <button
+                type="button"
+                aria-label="Next screenshot"
+                onClick={stop(() => step(1))}
+                className={`${iconBtn} fixed right-3 top-1/2 -translate-y-1/2`}
+              >
                 <ChevronRight size={22} />
               </button>
             </>
           )}
-          <figure className="w-full max-w-5xl" onClick={(e) => e.stopPropagation()}>
+          <figure
+            className="w-full max-w-5xl"
+            onClick={(e) => e.stopPropagation()}
+          >
             <Image
               src={shots[open].src}
               alt={shots[open].alt}
