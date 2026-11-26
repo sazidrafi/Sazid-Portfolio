@@ -2,6 +2,7 @@ import PageHeader from "@/components/ui/PageHeader";
 import Card from "@/components/ui/Card";
 import Badge from "@/components/ui/Badge";
 import Button from "@/components/ui/Button";
+import TechStackGrid from "@/components/tech/TechStackGrid";
 import profile, { about } from "@/data/profile";
 
 export const metadata = {
@@ -32,6 +33,11 @@ export default function AboutPage() {
               <p key={i}>{p}</p>
             ))}
           </div>
+        </section>
+
+        <section>
+          <h2 data-reveal className={h2}>Technology stack</h2>
+          <TechStackGrid />
         </section>
 
         <section>
