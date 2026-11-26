@@ -1,8 +1,10 @@
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import "./animations.css";
 import ThemeProvider from "@/components/layout/ThemeProvider";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import ScrollReveal from "@/components/layout/ScrollReveal";
 import profile from "@/data/profile";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans", display: "swap" });
@@ -15,7 +17,12 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${inter.variable} ${mono.variable}`}>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      data-scroll-behavior="smooth"
+      className={`${inter.variable} ${mono.variable}`}
+    >
       <body>
         <ThemeProvider>
           <a
@@ -27,6 +34,7 @@ export default function RootLayout({ children }) {
           <Navbar />
           <main id="main">{children}</main>
           <Footer />
+          <ScrollReveal />
         </ThemeProvider>
       </body>
     </html>

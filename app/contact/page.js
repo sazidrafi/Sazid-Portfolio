@@ -11,8 +11,9 @@ export const metadata = {
   description: "Get in touch about junior frontend roles, projects, or collaboration.",
 };
 
-const linkCls = "font-medium text-text hover:text-accent break-all";
+const linkCls = "font-medium text-text transition-colors hover:text-accent break-all";
 const iconWrap = "flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-accent-subtle text-accent";
+const d = (ms) => ({ "--reveal-delay": `${ms}ms` });
 
 export default function ContactPage() {
   return (
@@ -20,15 +21,15 @@ export default function ContactPage() {
       <PageHeader title="Contact" intro={contact.intro} />
 
       <div className="mx-auto grid w-full max-w-[1100px] gap-10 px-5 pb-24 sm:px-8 lg:grid-cols-[1.2fr_1fr]">
-        <Card className="p-6 sm:p-8">
+        <Card data-reveal className="p-6 sm:p-8">
           <h2 className="mb-6 text-2xl font-semibold tracking-tight">Send a message</h2>
           <ContactForm />
         </Card>
 
         <div className="space-y-4">
-          <h2 className="mb-2 text-2xl font-semibold tracking-tight">Find me online</h2>
+          <h2 data-reveal className="mb-2 text-2xl font-semibold tracking-tight">Find me online</h2>
 
-          <Card className="flex items-center gap-4 p-5">
+          <Card interactive data-reveal style={d(60)} className="flex items-center gap-4 p-5">
             <span className={iconWrap}><Mail size={20} /></span>
             <div className="min-w-0 flex-1">
               <p className="text-sm text-subtle">Email</p>
@@ -37,28 +38,28 @@ export default function ContactPage() {
             <CopyButton text={profile.email} label="Copy" />
           </Card>
 
-          <Card className="flex items-center gap-4 p-5">
+          <Card interactive data-reveal style={d(120)} className="flex items-center gap-4 p-5">
             <span className={iconWrap}><LinkedinIcon size={20} /></span>
             <div className="min-w-0">
               <p className="text-sm text-subtle">LinkedIn</p>
               <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" className={linkCls}>
-                Follow Me 
+                md-sazidul-islam39
               </a>
             </div>
           </Card>
 
-          <Card className="flex items-center gap-4 p-5">
+          <Card interactive data-reveal style={d(180)} className="flex items-center gap-4 p-5">
             <span className={iconWrap}><GithubIcon size={20} /></span>
             <div className="min-w-0">
               <p className="text-sm text-subtle">GitHub</p>
               <a href={profile.github} target="_blank" rel="noopener noreferrer" className={linkCls}>
-                Look up to my projects
+                github.com/sazidrafi
               </a>
             </div>
           </Card>
 
           {profile.location && (
-            <Card className="flex items-center gap-4 p-5">
+            <Card interactive data-reveal style={d(240)} className="flex items-center gap-4 p-5">
               <span className={iconWrap}><MapPin size={20} /></span>
               <div>
                 <p className="text-sm text-subtle">Location</p>

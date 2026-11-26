@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 const base =
-  "inline-flex items-center justify-center gap-2 rounded-md px-5 py-2.5 text-[0.95rem] font-semibold transition-colors";
+  "inline-flex items-center justify-center gap-2 rounded-md px-5 py-2.5 text-[0.95rem] font-semibold transition-[background-color,border-color,color,transform] duration-150 active:scale-[0.97]";
 const variants = {
   primary: "bg-accent text-on-accent border border-transparent hover:bg-accent-hover active:bg-accent-active",
   secondary: "bg-transparent text-text border border-border-strong hover:border-accent hover:text-accent hover:bg-surface-hover",

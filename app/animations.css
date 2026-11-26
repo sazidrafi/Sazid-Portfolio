@@ -1,0 +1,41 @@
+/* Motion system: transform + opacity only, short durations, no extra libraries.
+   Nothing is hidden by CSS until JavaScript is ready, so content never waits on scripts. */
+:root { --ease-out: cubic-bezier(0.22, 1, 0.36, 1); }
+
+html { scroll-padding-top: 5rem; } /* anchor links land below the sticky navbar */
+
+/* Page entrance (used by app/template.js) */
+.page-enter { animation: page-in 220ms ease-out; }
+@keyframes page-in { from { opacity: 0; } to { opacity: 1; } }
+
+/* Entrance + scroll reveal */
+.reveal-hidden { opacity: 0; transform: translateY(16px); }
+.reveal-in {
+  animation: reveal-up 520ms var(--ease-out) backwards;
+  animation-delay: var(--reveal-delay, 0ms);
+}
+@keyframes reveal-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* Hover lift for cards and small items (mouse devices only) */
+.hover-lift {
+  transition: transform 200ms var(--ease-out), border-color 200ms ease,
+              box-shadow 200ms ease, background-color 200ms ease;
+}
+@media (hover: hover) and (pointer: fine) {
+  .hover-lift:hover {
+    transform: translateY(-3px);
+    border-color: rgb(var(--accent-border) / var(--accent-border-a));
+    background-color: rgb(var(--surface-hover));
+    box-shadow: 0 8px 24px rgb(15 23 42 / 0.1);
+  }
+  .dark .hover-lift:hover { box-shadow: 0 8px 24px rgb(0 0 0 / 0.45); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-enter, .reveal-in { animation: none; }
+  .reveal-hidden { opacity: 1; transform: none; }
+  .hover-lift:hover { transform: none; }
+}
